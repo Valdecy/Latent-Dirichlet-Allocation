@@ -27,37 +27,38 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
     tokenizer = RegexpTokenizer(r'\w+')
     result_list = []
     
-    # English stop words List
+    # English Stopwords
     stop_words_en = get_stop_words('en')
-    # Create Corpus
+   
+    # Corpus
     corpus = []
     for i in document:
         tokens = tokenizer.tokenize(i.lower())
         tokens = [i for i in tokens if not i in stop_words_en]
         corpus.append(tokens)
     
-    # Create Corpus ID
+    # Corpus ID
     corpus_id = []
     for i in document:
         tokens = tokenizer.tokenize(i.lower())
         tokens = [i for i in tokens if not i in stop_words_en]
         corpus_id.append(tokens)
     
-    # Unique words in the corpus
+    # Unique Words
     uniqueWords = []
     for j in range(0, len(corpus)): 
         for i in corpus[j]:
             if not i in uniqueWords:
                 uniqueWords.append(i)
        
-    # Corpus ID    
+    # Corpus ID for Unique Words   
     for j in range(0, len(corpus)): 
         for i in range(0, len(uniqueWords)):
             for k in range(0, len(corpus[j])): 
                 if uniqueWords[i] == corpus[j][k]:
                     corpus_id[j][k]  = i  
     
-    # Create Topic Assignment
+    # Topic Assignment
     topic_assignment = []
     for i in document:
         tokens = tokenizer.tokenize(i.lower())
