@@ -20,10 +20,10 @@ from nltk.tokenize import RegexpTokenizer
 from stop_words import get_stop_words
 from random import randint
 
-# Function: nn - Neural Networks
+# Function: LDA
 def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dtm_matrix = False, dtm_bin_matrix = False, dtm_tf_matrix = False, dtm_tfidf_matrix = False, co_occurrence_matrix = False, correl_matrix = False):
    
-    ################ Part 1 - Network Architecture #############################
+    ################ Part 1 - Start of Function #############################
     tokenizer = RegexpTokenizer(r'\w+')
     result_list = []
     
@@ -185,7 +185,7 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
 
     ############### End of Function ##############
 
-######################## Part 4 - Usage ####################################
+######################## Part 2 - Usage ####################################
 
 # Documents
 doc_1 = "Data Mining is a technique. Data Mining is my first favourite technique."
