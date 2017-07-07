@@ -20,7 +20,7 @@ from nltk.tokenize import RegexpTokenizer
 from stop_words import get_stop_words
 from random import randint
 
-# Function: LDA
+# Function: lda_tm
 def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dtm_matrix = False, dtm_bin_matrix = False, dtm_tf_matrix = False, dtm_tfidf_matrix = False, co_occurrence_matrix = False, correl_matrix = False):
    
     ################ Part 1 - Start of Function #############################
@@ -200,4 +200,4 @@ doc_9 = "Very good! Very good indeed! How can I thank you?"
 # Compile Documents
 docs = [doc_1, doc_2, doc_3, doc_4, doc_5, doc_6, doc_7, doc_8, doc_9]
 
-lda = lda_tm(document = docs, K = 3, alpha = 0.12, eta = 0.01, iterations = 2500, dtm_matrix = True, dtm_bin_matrix = True, dtm_tf_matrix = True, dtm_tfidf_matrix = True, co_occurrence_matrix = True, correl_matrix = True)
+lda = lda_tm(document = docs, K = 3, alpha = 0.12, eta = 0.01, iterations = 2500, co_occurrence_matrix = True)
