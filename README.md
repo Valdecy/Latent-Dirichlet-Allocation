@@ -1,5 +1,5 @@
 # Latent-Dirichlet-Allocation
-Latent Dirichlet Allocation (LDA) function with Collapsed Gibbs Sampling. The function returns the documents per topic probabilities and the term per topic probabilities. It also computes the dtm, binary dtm, tf dtm and tf-idf dtm if required.
+Latent Dirichlet Allocation (LDA) function with Collapsed Gibbs Sampling. The function preprocess the corpus and returns: 1) the documents per topic probabilities and 2) the term per topic probabilities. It also computes the dtm, binary dtm, tf dtm and tf-idf dtm if required.
 
 * K = The total number of topics. Default: 2
 * alpha = Dirichlet prior. Default: 0.12, 
