@@ -201,4 +201,7 @@ doc_9 = "Very good! Very good indeed! How can I thank you?"
 # Compile Documents
 docs = [doc_1, doc_2, doc_3, doc_4, doc_5, doc_6, doc_7, doc_8, doc_9]
 
+# Call Function
 lda = lda_tm(document = docs, K = 3, alpha = 0.12, eta = 0.01, iterations = 2500, co_occurrence_matrix = True)
+
+########################## End of Code #####################################
