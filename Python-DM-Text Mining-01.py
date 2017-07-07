@@ -162,8 +162,7 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
                 topic_assignment[d][w] = t1 
                 cdt[d,t1] = cdt[d,t1] + 1 
                 cwt[t1,wid] = cwt[t1,wid] + 1
-                if t0 != t1:
-                    print(('iteration:', i,' doc:', d, ' topic:',t0,'=>',t1, ' token:' , corpus[d][w]))
+                print('iteration:', i)
         
     theta = (cdt + alpha)
     for i in range(0, len(theta)): 
