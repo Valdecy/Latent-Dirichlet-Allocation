@@ -11,13 +11,10 @@
 
 ############################################################################
 
-# pip install stop-words
-
 # Installing Required Libraries
 import numpy  as np
 import pandas as pd
 from nltk.tokenize import RegexpTokenizer
-from stop_words import get_stop_words
 from random import randint
 
 # Function: lda_tm
@@ -26,22 +23,17 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
     ################ Part 1 - Start of Function #############################
     tokenizer = RegexpTokenizer(r'\w+')
     result_list = []
-    
-    # English Stopwords
-    stop_words_en = get_stop_words('en')
    
     # Corpus
     corpus = []
     for i in document:
         tokens = tokenizer.tokenize(i.lower())
-        tokens = [i for i in tokens if not i in stop_words_en]
         corpus.append(tokens)
     
     # Corpus ID
     corpus_id = []
     for i in document:
         tokens = tokenizer.tokenize(i.lower())
-        tokens = [i for i in tokens if not i in stop_words_en]
         corpus_id.append(tokens)
     
     # Unique Words
@@ -62,11 +54,10 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
     topic_assignment = []
     for i in document:
         tokens = tokenizer.tokenize(i.lower())
-        tokens = [i for i in tokens if not i in stop_words_en]
         topic_assignment.append(tokens)
     
     # dtm
-    if dtm_matrix == True or dtm_bin_matrix == True or dtm_tf_matrix == True or dtm_tfidf_matrix == True:
+    if dtm_matrix == True or dtm_bin_matrix == True or dtm_tf_matrix == True or dtm_tfidf_matrix == True or co_occurrence_matrix == True or correl_matrix == True:
         dtm = np.zeros(shape = (len(corpus), len(uniqueWords)))   
         for j in range(0, len(corpus)): 
             for i in range(0, len(uniqueWords)):
@@ -77,7 +68,7 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
         result_list.append(dtm_pd)
     
     # dtm_bin
-    if dtm_bin_matrix == True:
+    if dtm_bin_matrix == True or co_occurrence_matrix == True or correl_matrix == True:
         dtm_bin = np.zeros(shape = (len(corpus), len(uniqueWords)))  
         for i in range(0, len(corpus)): 
             for j in range(0, len(uniqueWords)):
@@ -188,15 +179,15 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
 ######################## Part 2 - Usage ####################################
 
 # Documents
-doc_1 = "Data Mining is a technique. Data Mining is my first favourite technique."
-doc_2 = "Data Mining is a technique. Data Mining is my second favourite technique."
-doc_3 = "Data Mining is a technique. Data Mining is my third favourite technique."
-doc_4 = "Data Mining is a technique. Data Mining is my fourth favourite technique."
-doc_5 = "On Friday, I will play the guitar."
-doc_6 = "On Saturday, I will play the guitar."
-doc_7 = "On Sunday, I will play the guitar."
-doc_8 = "On Monday, I will play the guitar."
-doc_9 = "Very good! Very good indeed! How can I thank you?"
+doc_1 = "data mining technique data mining first favourite technique"
+doc_2 = "data mining technique data mining second favourite technique"
+doc_3 = "data mining technique data mining third favourite technique"
+doc_4 = "data mining technique data mining fourth favourite technique"
+doc_5 = "friday play guitar."
+doc_6 = "saturday will play guitar."
+doc_7 = "sunday will play guitar."
+doc_8 = "monday will play guitar."
+doc_9 = "good good indeed can thank"
 
 # Compile Documents
 docs = [doc_1, doc_2, doc_3, doc_4, doc_5, doc_6, doc_7, doc_8, doc_9]
