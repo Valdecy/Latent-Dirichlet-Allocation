@@ -65,6 +65,8 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
                     if uniqueWords[i] == corpus[j][k]:
                         dtm[j][i]  = dtm[j][i] + 1
         dtm_pd = pd.DataFrame(dtm, columns = uniqueWords)
+    
+    if dtm_matrix == True:
         result_list.append(dtm_pd)
     
     # dtm_bin
@@ -75,6 +77,8 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
                 if dtm[i,j] > 0:
                     dtm_bin[i,j] = 1
         dtm_bin_pd = pd.DataFrame(dtm_bin, columns = uniqueWords)
+    
+    if dtm_bin_matrix == True:
         result_list.append(dtm_bin_pd)
     
     # dtm_tf
