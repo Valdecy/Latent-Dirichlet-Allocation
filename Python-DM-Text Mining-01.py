@@ -140,25 +140,26 @@ def lda_tm(document = [], K = 2, alpha = 0.12, eta = 0.01, iterations = 5000, dt
                             cwt[n][j]  = cwt[n][j] + 1 
     
     # LDA Algorithm
-    for i in range(0, iterations): 
+    for i in range(0, iterations + 1): 
         for d in range(0, len(corpus)):
             for w in range(0, len(corpus[d])):
-                t0 = topic_assignment[d][w]
-                wid = corpus_id[d][w]
-                cdt[d,t0] = cdt[d,t0] - 1 
-                cwt[t0,wid] = cwt[t0,wid] - 1
-                p_z = ((cwt[:,wid] + eta) / (np.sum((cwt), axis = 1) + len(corpus) * eta)) * ((cdt[d,] + alpha) / (sum(cdt[d,]) + K * alpha )) 
+                initial_t = topic_assignment[d][w]
+                word_num = corpus_id[d][w]
+                cdt[d,initial_t] = cdt[d,initial_t] - 1 
+                cwt[initial_t,word_num] = cwt[initial_t,word_num] - 1
+                p_z = ((cwt[:,word_num] + eta) / (np.sum((cwt), axis = 1) + len(corpus) * eta)) * ((cdt[d,] + alpha) / (sum(cdt[d,]) + K * alpha )) 
                 z = np.sum(p_z)
                 p_z_ac = np.add.accumulate(p_z/z)   
                 u = np.random.random_sample()
                 for m in range(0, K):
                     if u <= p_z_ac[m]:
-                        t1 = m
+                        final_t = m
                         break
-                topic_assignment[d][w] = t1 
-                cdt[d,t1] = cdt[d,t1] + 1 
-                cwt[t1,wid] = cwt[t1,wid] + 1
-                print('iteration:', i)
+                topic_assignment[d][w] = final_t 
+                cdt[d,final_t] = cdt[d,final_t] + 1 
+                cwt[final_t,word_num] = cwt[final_t,word_num] + 1
+        if i % 100 == 0:
+            print('iteration:', i)
         
     theta = (cdt + alpha)
     for i in range(0, len(theta)): 
