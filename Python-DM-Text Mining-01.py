@@ -7,7 +7,8 @@
 # Lesson: Text Mining
 
 # Citation: 
-# PEREIRA, V. (2017). Project: LDA - Latent Dirichlet Allocation, File: Python-DM-Text Mining-01.py, GitHub repository: <https://github.com/Valdecy/LDA - Latent Dirichlet Allocation>
+# PEREIRA, V. (2017). Project: LDA - Latent Dirichlet Allocation, File: Python-DM-Text Mining-01.py, GitHub repository: 
+# <https://github.com/Valdecy/Latent-Dirichlet-Allocation>
 
 ############################################################################
 
